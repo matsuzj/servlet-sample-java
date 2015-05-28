@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+def javaVersion = 1.8
+def defaultEncoding = 'UTF-8'
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+tasks.withType(AbstractCompile) each { it.options.encoding = defaultEncoding }
+
+repositories {
+    mavenCentral()
+}
+
+// Web 公開用のディレクトリを指定
+webAppDirName = 'src/main/webapp'
+
+// ソースフォルダの場所を指定
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+// providedCompile：コンパイル時にはクラスパスに含めるが、パッケージ(war・jar等)には含めない
+dependencies {
+    providedCompile 'javax:javaee-api:7.0'
+}
+
+// compile：プロジェクトのプロダクトコードをコンパイルするのに必要な依存関係
+dependencies {
+}
+
+// testCompile：プロジェクトのテストコードをコンパイルするのに必要な依存関係。デフォルトで、コンパイルされたプロダクトクラスと、コンパイル時の依存関係も含まれる。
+dependencies {
+}
+
+

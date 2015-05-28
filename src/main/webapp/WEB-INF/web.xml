@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <display-name>TestDynamicWebApp31</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>TodoServlet</servlet-name>
+        <servlet-class>app.todo.servlet.TodoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TodoServlet</servlet-name>
+        <url-pattern>/todo/*</url-pattern>
+    </servlet-mapping>
+
+
+    <!--- app.sample.servlet -->
+    <servlet>
+      <servlet-name>HelloServlet</servlet-name>
+      <servlet-class>app.sample.servlet.HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+      <servlet-name>HelloServlet</servlet-name>
+      <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>LifeCycleServlet</servlet-name>
+      <servlet-class>app.sample.servlet.LifeCycleServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>LifeCycleServlet</servlet-name>
+      <url-pattern>/lifecycle</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>RequestParameterServlet</servlet-name>
+      <servlet-class>app.sample.servlet.RequestParameterServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>RequestParameterServlet</servlet-name>
+      <url-pattern>/request-param-servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>InitParamServlet</servlet-name>
+      <servlet-class>app.sample.servlet.InitParamServlet</servlet-class>
+      <init-param>
+        <param-name>hoge</param-name>
+        <param-value>HOGE</param-value>
+      </init-param>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>InitParamServlet</servlet-name>
+      <url-pattern>/init-param</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>FirstStartupServlet</servlet-name>
+      <servlet-class>app.sample.servlet.FirstStartupServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+    </servlet>
+  
+    <servlet>
+      <servlet-name>SecondStartupServlet</servlet-name>
+      <servlet-class>app.sample.servlet.SecondStartupServlet</servlet-class>
+      <load-on-startup>2</load-on-startup>
+    </servlet>
+  
+    <servlet>
+      <servlet-name>ThirdStartupServlet</servlet-name>
+      <servlet-class>app.sample.servlet.ThirdStartupServlet</servlet-class>
+      <load-on-startup>3</load-on-startup>
+    </servlet>
+
+
+    <!---
+        /todo-sample-java/wildcard              UrlPatternWildCardServlet
+        /todo-sample-java/wildcard/test         UrlPatternWildCardServlet
+        /todo-sample-java/test.sample           UrlPatternExtensionServlet
+        /todo-sample-java/test/test.sample      UrlPatternExtensionServlet
+        /todo-sample-java/wildcard/test.sample  UrlPatternWildCardServlet
+    -->
+
+    <servlet>
+      <servlet-name>UrlPatternWildCardServlet</servlet-name>
+      <servlet-class>app.sample.servlet.UrlPatternWildCardServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>UrlPatternWildCardServlet</servlet-name>
+      <url-pattern>/wildcard/*</url-pattern>
+    </servlet-mapping>
+  
+    <servlet>
+      <servlet-name>UrlPatternExtensionServlet</servlet-name>
+      <servlet-class>app.sample.servlet.UrlPatternExtensionServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>UrlPatternExtensionServlet</servlet-name>
+      <url-pattern>*.sample</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>FromServlet</servlet-name>
+      <servlet-class>app.sample.servlet.FromServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>FromServlet</servlet-name>
+      <url-pattern>/forward/from</url-pattern>
+    </servlet-mapping>
+  
+    <servlet>
+      <servlet-name>ToServlet</servlet-name>
+      <servlet-class>app.sample.servlet.ToServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>ToServlet</servlet-name>
+      <url-pattern>/forward/to</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>AsyncServlet</servlet-name>
+      <servlet-class>app.sample.servlet.AsyncServlet</servlet-class>
+      <async-supported>true</async-supported>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>AsyncServlet</servlet-name>
+      <url-pattern>/async</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>SessionServlet</servlet-name>
+      <servlet-class>app.sample.servlet.SessionServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>SessionServlet</servlet-name>
+      <url-pattern>/session/*</url-pattern>
+    </servlet-mapping>
+
+    <!---
+        ・<session-config> タグを web.xml に記述することで、セッションタイムアウトの時間を設定できる。
+        ・値は分数を指定する。
+        ・デフォルトは 60 （1時間）。
+        ・-1 を指定した場合は、セッションタイムアウト無しになる。
+    -->
+    <session-config>
+      <session-timeout>60</session-timeout>
+    </session-config> 
+
+    <context-param>
+      <param-name>hoge</param-name>
+      <param-value>HOGE</param-value>
+    </context-param>
+
+    <listener>
+      <listener-class>app.sample.servlet.listener.WebAppListener</listener-class>
+    </listener>
+    
+    <listener>
+      <listener-class>app.sample.servlet.listener.SessionListener</listener-class>
+    </listener>
+
+    <filter>
+      <filter-name>RequestFilter</filter-name>
+      <filter-class>app.sample.servlet.filter.RequestFilter</filter-class>
+      <async-supported>true</async-supported>
+    </filter>
+
+    <filter-mapping>
+      <filter-name>RequestFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+      <welcome-file>hello</welcome-file>
+    </welcome-file-list>
+
+    <welcome-file-list>
+      <welcome-file>html/welcome.html</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+      <error-code>404</error-code>
+      <location>/error/404.html</location>
+    </error-page>
+
+    <servlet>
+      <servlet-name>NullPointerServlet</servlet-name>
+      <servlet-class>app.sample.servlet.NullPointerServlet</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>NullPointerServlet</servlet-name>
+      <url-pattern>/null</url-pattern>
+    </servlet-mapping>
+  
+    <error-page>
+      <exception-type>java.lang.NullPointerException</exception-type>
+      <location>/error/null.html</location>
+    </error-page>
+
+    <jsp-config>
+      <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <page-encoding>UTF-8</page-encoding>
+        <include-prelude>/jsp/taglib.jsp</include-prelude>
+      </jsp-property-group>
+    </jsp-config>
+
+    <security-role>
+      <role-name>admin_role</role-name>
+    </security-role>
+  
+    <security-role>
+      <role-name>user_role</role-name>
+    </security-role>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>User Resource</web-resource-name>
+        <url-pattern>/secure/user/*</url-pattern>
+        <http-method>GET</http-method>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>user_role</role-name>
+      </auth-constraint>
+    </security-constraint>
+  
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>Admin Resource</web-resource-name>
+        <url-pattern>/secure/admin/*</url-pattern>
+        <http-method>GET</http-method>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>admin_user</role-name>
+      </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>HTTPS Resource</web-resource-name>
+        <url-pattern>/secure/https/*</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>admin_role</role-name>
+      </auth-constraint>
+      <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+      </user-data-constraint>
+    </security-constraint>
+
+    <login-config>
+      <auth-method>FORM</auth-method>
+      <realm-name>file</realm-name>
+      <form-login-config>
+        <form-login-page>/secure/login.html</form-login-page>
+        <form-error-page>/secure/error.html</form-error-page>
+      </form-login-config>
+    </login-config>
+
+
+
+
+</web-app>
