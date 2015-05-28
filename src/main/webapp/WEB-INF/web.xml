@@ -14,17 +14,6 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>TodoServlet</servlet-name>
-        <servlet-class>app.todo.servlet.TodoServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TodoServlet</servlet-name>
-        <url-pattern>/todo/*</url-pattern>
-    </servlet-mapping>
-
-
     <!--- app.sample.servlet -->
     <servlet>
       <servlet-name>HelloServlet</servlet-name>
@@ -90,11 +79,11 @@
 
 
     <!---
-        /todo-sample-java/wildcard              UrlPatternWildCardServlet
-        /todo-sample-java/wildcard/test         UrlPatternWildCardServlet
-        /todo-sample-java/test.sample           UrlPatternExtensionServlet
-        /todo-sample-java/test/test.sample      UrlPatternExtensionServlet
-        /todo-sample-java/wildcard/test.sample  UrlPatternWildCardServlet
+        /servlet-sample-java/wildcard              UrlPatternWildCardServlet
+        /servlet-sample-java/wildcard/test         UrlPatternWildCardServlet
+        /servlet-sample-java/test.sample           UrlPatternExtensionServlet
+        /servlet-sample-java/test/test.sample      UrlPatternExtensionServlet
+        /servlet-sample-java/wildcard/test.sample  UrlPatternWildCardServlet
     -->
 
     <servlet>

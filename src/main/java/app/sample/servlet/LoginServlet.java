@@ -21,6 +21,6 @@ public class LoginServlet extends HttpServlet {
 
 		req.login(username, password);
 
-		resp.sendRedirect("/todo-sample-java/secure/user/user.html");
+		resp.sendRedirect("/servlet-sample-java/secure/user/user.html");
 	}
 }

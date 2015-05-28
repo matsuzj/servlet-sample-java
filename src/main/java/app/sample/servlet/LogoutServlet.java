@@ -18,6 +18,6 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.logout();
 
-		resp.sendRedirect("/todo-sample-java/secure/login.html");
+		resp.sendRedirect("/servlet-sample-java/secure/login.html");
 	}
 }
